@@ -1,0 +1,59 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+html body{
+    background-image: url("../img/burgerPlace.png"); 
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed;
+    background-color: #f7f4f9;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 20px;
+}
+
+.title{
+    background-color: #FFC107;
+    opacity: .9;
+    padding:15px;
+    border-radius: 7px;
+    margin-top:5px;
+}
+
+h2{
+    background-color: #FFC107;
+    padding:5px;
+    border-radius: 7px;
+}
+
+.burgerPic{
+    width:200px;
+    height: 200px;
+    background-color: #f7f4f9;
+    padding:15px;
+    border-radius: 175px;
+    margin:5px;
+}
+
+li.list-group-item{
+    font-size: 120%
+}
+
+.bottom{
+    background-color: #f7f4f9;
+    opacity: .9;
+    padding:15px;
+    border-radius: 7px;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.custButton{
+    background-color: #FFC107;
+    margin: 2px; 
+}
+
+.custcard{
+    margin-top:8px;
+    padding:8px !important;
+}
