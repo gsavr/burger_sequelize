@@ -7,10 +7,8 @@ var db = require('../models');
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  db.Burgers.findAll({} ).then(function(response){
+  db.Burgers.findAll({include:[db.Customers]}).then(function(response){
     var hbsObject = { burgers: response};
-    // cust name query
-    console.log(hbsObject)
 		res.render('index', hbsObject);
 		}).catch(function(err){
 			console.log(err);
@@ -20,7 +18,7 @@ router.get("/", function(req, res) {
 router.get("/api/customers", function(req, res) {
   db.Customers.findAll({}).then(function(response){
     //console.log(response)
-    var hbsObject2 = { customers: response};
+    var hbsObject2 = {customers: response};
     res.json(hbsObject2);
     }).catch(function(err){
       console.log(err);
@@ -41,7 +39,8 @@ router.post("/api/burgers", function(req, res) {
 router.put("/api/burgers/", function(req, res) {
   db.Burgers.update({
     devoured:req.body.devoured,
-    CustomerId:req.body.CustomerId
+    CustomerId:req.body.CustomerId,
+    order_name:req.body.order_name
   },{
     where:{
       id:req.body.id

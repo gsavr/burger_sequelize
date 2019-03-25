@@ -18,7 +18,8 @@
               </button>
               <div class="collapse" id="collapseExample{{id}}">
                 <div class="card card-body custcard">
-                  Please select your name from the Customer List
+                  Please select your name from the Customer List:
+                  <br><span style="font-size:14px">(You may register at the bottom of the page)</span>
                   <div class="customers">
                 
                   </div>
@@ -36,7 +37,7 @@
         {{#each burgers}}
           {{#if devoured}}
           <li class="list-group-item">
-            <i class="fas fa-hamburger"></i><span> </span>{{this.burger_name}} <br>Ordered by: {{Customers.customer_name}} {{this.CustomerId}}
+            <i class="fas fa-hamburger"></i><span> </span>{{this.burger_name}} <br>Ordered by: {{this.order_name}}
             <button class="btn btn-warning change-from-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
                   {{#if devoured}}Order Finished{{else}}Order{{/if}}<span> </span><i class="fas fa-check"></i>
               </button>
@@ -77,12 +78,14 @@
   $(document).on("click",".change-to-devoured", function(event) {
     var burger_id = $(this).data("burger_id");
     var cust_id = $(this).data("cust_id");
+    var cust_name = $(this).data("cust_name");
     var devoured = 1
   ///add customer and change state
     var burgerState = {
       id: burger_id,
       devoured: devoured,
-      CustomerId: cust_id
+      CustomerId: cust_id,
+      order_name: cust_name
     };
 
     // Send the PUT request.
@@ -110,7 +113,7 @@
         //console.log(data)
         $(".customers").empty();
         for(i=0;i<data.length;i++){
-          $(".customers").append(`<button class="btn btn-dark change-to-devoured custButton" data-burger_id="${burger_id}" data-cust_id="${data[i].id}" ><i class="far fa-user"></i><span> </span>${data[i].customer_name}</button><br>`)
+          $(".customers").append(`<button class="btn btn-dark change-to-devoured custButton" data-burger_id="${burger_id}" data-cust_id="${data[i].id}" data-cust_name="${data[i].customer_name}" ><i class="far fa-user"></i><span> </span>${data[i].customer_name}</button><br>`)
           //console.log(data[i].customer_name)
         }
       }

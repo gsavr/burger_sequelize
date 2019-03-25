@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue:false,
+    },
+    order_name:{
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   });
   Burgers.associate = function(models) {
